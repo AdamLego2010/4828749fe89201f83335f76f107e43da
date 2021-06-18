@@ -8,6 +8,19 @@ local run = game:GetService("RunService")
 local tween = game:GetService("TweenService")
 local tweeninfo = TweenInfo.new
 
+
+-- tools --
+local hiddenUI = get_hidden_gui or gethui
+
+function randomString()
+	local length = math.random(10,20)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+
 -- additional
 local utility = {}
 
@@ -317,7 +330,7 @@ do
 			TextSize = 14
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 40, 0.5, 0),
@@ -331,7 +344,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			icon and utility:Create("ImageLabel", {
-				Name = "Icon", 
+				Name = randomString(), 
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 12, 0.5, 0),
@@ -344,7 +357,7 @@ do
 		})
 
 		local container = utility:Create("ScrollingFrame", {
-			Name = title,
+			Name = randomString(),
 			Parent = library.container.Main,
 			Active = true,
 			BackgroundTransparency = 1,
@@ -372,7 +385,7 @@ do
 
 	function section.new(page, title)
 		local container = utility:Create("ImageLabel", {
-			Name = title,
+			Name = randomString(),
 			Parent = page.container,
 			BackgroundTransparency = 1,
 			Size = UDim2.new(1, -10, 0, 28),
@@ -384,7 +397,7 @@ do
 			ClipsDescendants = true
 		}, {
 			utility:Create("Frame", {
-				Name = "Container",
+				Name = randomString(),
 				Active = true,
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
@@ -392,7 +405,7 @@ do
 				Size = UDim2.new(1, -16, 1, -16)
 			}, {
 				utility:Create("TextLabel", {
-					Name = "Title",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					Size = UDim2.new(1, 0, 0, 20),
 					ZIndex = 2,
@@ -509,7 +522,7 @@ do
 
 		-- standard create
 		local notification = utility:Create("ImageLabel", {
-			Name = "Notification",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			Size = UDim2.new(0, 200, 0, 60),
@@ -521,7 +534,7 @@ do
 			ClipsDescendants = true
 		}, {
 			utility:Create("ImageLabel", {
-				Name = "Flash",
+				Name = randomString(),
 				Size = UDim2.new(1, 0, 1, 0),
 				BackgroundTransparency = 1,
 				Image = "rbxassetid://4641149554",
@@ -529,7 +542,7 @@ do
 				ZIndex = 5
 			}),
 			utility:Create("ImageLabel", {
-				Name = "Glow",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, -15, 0, -15),
 				Size = UDim2.new(1, 30, 1, 30),
@@ -541,7 +554,7 @@ do
 				SliceCenter = Rect.new(24, 24, 276, 276)
 			}),
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0, 8),
 				Size = UDim2.new(1, -40, 0, 16),
@@ -552,7 +565,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("TextLabel", {
-				Name = "Text",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 1, -24),
 				Size = UDim2.new(1, -40, 0, 16),
@@ -563,7 +576,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageButton", {
-				Name = "Accept",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(1, -26, 0, 8),
 				Size = UDim2.new(0, 16, 0, 16),
@@ -572,7 +585,7 @@ do
 				ZIndex = 4
 			}),
 			utility:Create("ImageButton", {
-				Name = "Decline",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(1, -26, 1, -24),
 				Size = UDim2.new(0, 16, 0, 16),
@@ -663,7 +676,7 @@ do
 
 	function section:addButton(title, callback)
 		local button = utility:Create("ImageButton", {
-			Name = "Button",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -675,7 +688,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				ZIndex = 3,
@@ -723,7 +736,7 @@ do
 
 	function section:addToggle(title, default, callback)
 		local toggle = utility:Create("ImageButton", {
-			Name = "Toggle",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -735,7 +748,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		},{
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0.5, 1),
@@ -749,7 +762,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageLabel", {
-				Name = "Button",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Position = UDim2.new(1, -50, 0.5, -8),
@@ -761,7 +774,7 @@ do
 				SliceCenter = Rect.new(2, 2, 298, 298)
 			}, {
 				utility:Create("ImageLabel", {
-					Name = "Frame",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					Position = UDim2.new(0, 2, 0.5, -6),
 					Size = UDim2.new(1, -22, 1, -4),
@@ -796,7 +809,7 @@ do
 
 	function section:addTextbox(title, default, callback)
 		local textbox = utility:Create("ImageButton", {
-			Name = "Textbox",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -808,7 +821,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0.5, 1),
@@ -822,7 +835,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageLabel", {
-				Name = "Button",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(1, -110, 0.5, -8),
 				Size = UDim2.new(0, 100, 0, 16),
@@ -833,7 +846,7 @@ do
 				SliceCenter = Rect.new(2, 2, 298, 298)
 			}, {
 				utility:Create("TextBox", {
-					Name = "Textbox", 
+					Name = randomString(), 
 					BackgroundTransparency = 1,
 					TextTruncate = Enum.TextTruncate.AtEnd,
 					Position = UDim2.new(0, 5, 0, 0),
@@ -904,7 +917,7 @@ do
 
 	function section:addKeybind(title, default, callback, changedCallback)
 		local keybind = utility:Create("ImageButton", {
-			Name = "Keybind",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -916,7 +929,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0.5, 1),
@@ -930,7 +943,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageLabel", {
-				Name = "Button",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(1, -110, 0.5, -8),
 				Size = UDim2.new(0, 100, 0, 16),
@@ -941,7 +954,7 @@ do
 				SliceCenter = Rect.new(2, 2, 298, 298)
 			}, {
 				utility:Create("TextLabel", {
-					Name = "Text",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					ClipsDescendants = true,
 					Size = UDim2.new(1, 0, 1, 0),
@@ -1009,7 +1022,7 @@ do
 
 	function section:addColorPicker(title, default, callback)
 		local colorpicker = utility:Create("ImageButton", {
-			Name = "ColorPicker",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -1021,7 +1034,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		},{
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				AnchorPoint = Vector2.new(0, 0.5),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0.5, 1),
@@ -1035,7 +1048,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageButton", {
-				Name = "Button",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Position = UDim2.new(1, -50, 0.5, -7),
@@ -1049,7 +1062,7 @@ do
 		})
 
 		local tab = utility:Create("ImageLabel", {
-			Name = "ColorPicker",
+			Name = randomString(),
 			Parent = self.page.library.container,
 			BackgroundTransparency = 1,
 			Position = UDim2.new(0.75, 0, 0.400000006, 0),
@@ -1063,7 +1076,7 @@ do
 			Visible = false,
 		}, {
 			utility:Create("ImageLabel", {
-				Name = "Glow",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, -15, 0, -15),
 				Size = UDim2.new(1, 30, 1, 30),
@@ -1075,7 +1088,7 @@ do
 				SliceCenter = Rect.new(22, 22, 278, 278)
 			}),
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0, 8),
 				Size = UDim2.new(1, -40, 0, 16),
@@ -1087,7 +1100,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("ImageButton", {
-				Name = "Close",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(1, -26, 0, 8),
 				Size = UDim2.new(0, 16, 0, 16),
@@ -1096,7 +1109,7 @@ do
 				ImageColor3 = themes.TextColor
 			}), 
 			utility:Create("Frame", {
-				Name = "Container",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 8, 0, 32),
 				Size = UDim2.new(1, -18, 1, -40)
@@ -1106,7 +1119,7 @@ do
 					Padding = UDim.new(0, 6)
 				}),
 				utility:Create("ImageButton", {
-					Name = "Canvas",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					BorderColor3 = themes.LightContrast,
 					Size = UDim2.new(1, 0, 0, 60),
@@ -1117,21 +1130,21 @@ do
 					SliceCenter = Rect.new(2, 2, 298, 298)
 				}, {
 					utility:Create("ImageLabel", {
-						Name = "White_Overlay",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						Size = UDim2.new(1, 0, 0, 60),
 						Image = "rbxassetid://5107152351",
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}),
 					utility:Create("ImageLabel", {
-						Name = "Black_Overlay",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						Size = UDim2.new(1, 0, 0, 60),
 						Image = "rbxassetid://5107152095",
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}),
 					utility:Create("ImageLabel", {
-						Name = "Cursor",
+						Name = randomString(),
 						BackgroundColor3 = themes.TextColor,
 						AnchorPoint = Vector2.new(0.5, 0.5),
 						BackgroundTransparency = 1.000,
@@ -1142,7 +1155,7 @@ do
 					})
 				}),
 				utility:Create("ImageButton", {
-					Name = "Color",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
 					Position = UDim2.new(0, 0, 0, 4),
@@ -1155,7 +1168,7 @@ do
 					SliceCenter = Rect.new(2, 2, 298, 298)
 				}, {
 					utility:Create("Frame", {
-						Name = "Select",
+						Name = randomString(),
 						BackgroundColor3 = themes.TextColor,
 						BorderSizePixel = 1,
 						Position = UDim2.new(1, 0, 0, 0),
@@ -1175,7 +1188,7 @@ do
 					})
 				}),
 				utility:Create("Frame", {
-					Name = "Inputs",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					Position = UDim2.new(0, 10, 0, 158),
 					Size = UDim2.new(1, 0, 0, 16)
@@ -1186,7 +1199,7 @@ do
 						Padding = UDim.new(0, 6)
 					}),
 					utility:Create("ImageLabel", {
-						Name = "R",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						BorderSizePixel = 0,
 						Size = UDim2.new(0.305, 0, 1, 0),
@@ -1197,7 +1210,7 @@ do
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}, {
 						utility:Create("TextLabel", {
-							Name = "Text",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
 							ZIndex = 2,
@@ -1207,7 +1220,7 @@ do
 							TextSize = 10.000
 						}),
 						utility:Create("TextBox", {
-							Name = "Textbox",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
@@ -1220,7 +1233,7 @@ do
 						})
 					}),
 					utility:Create("ImageLabel", {
-						Name = "G",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						BorderSizePixel = 0,
 						Size = UDim2.new(0.305, 0, 1, 0),
@@ -1231,7 +1244,7 @@ do
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}, {
 						utility:Create("TextLabel", {
-							Name = "Text",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							ZIndex = 2,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
@@ -1241,7 +1254,7 @@ do
 							TextSize = 10.000
 						}),
 						utility:Create("TextBox", {
-							Name = "Textbox",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
@@ -1253,7 +1266,7 @@ do
 						})
 					}),
 					utility:Create("ImageLabel", {
-						Name = "B",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						BorderSizePixel = 0,
 						Size = UDim2.new(0.305, 0, 1, 0),
@@ -1264,7 +1277,7 @@ do
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}, {
 						utility:Create("TextLabel", {
-							Name = "Text",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0.400000006, 0, 1, 0),
 							ZIndex = 2,
@@ -1274,7 +1287,7 @@ do
 							TextSize = 10.000
 						}),
 						utility:Create("TextBox", {
-							Name = "Textbox",
+							Name = randomString(),
 							BackgroundTransparency = 1,
 							Position = UDim2.new(0.300000012, 0, 0, 0),
 							Size = UDim2.new(0.600000024, 0, 1, 0),
@@ -1287,7 +1300,7 @@ do
 					}),
 				}),
 				utility:Create("ImageButton", {
-					Name = "Button",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
 					Size = UDim2.new(1, 0, 0, 20),
@@ -1298,7 +1311,7 @@ do
 					SliceCenter = Rect.new(2, 2, 298, 298)
 				}, {
 					utility:Create("TextLabel", {
-						Name = "Text",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						Size = UDim2.new(1, 0, 1, 0),
 						ZIndex = 3,
@@ -1534,7 +1547,7 @@ do
 
 	function section:addSlider(title, default, min, max, callback)
 		local slider = utility:Create("ImageButton", {
-			Name = "Slider",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			BorderSizePixel = 0,
@@ -1547,7 +1560,7 @@ do
 			SliceCenter = Rect.new(2, 2, 298, 298)
 		}, {
 			utility:Create("TextLabel", {
-				Name = "Title",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0, 6),
 				Size = UDim2.new(0.5, 0, 0, 16),
@@ -1560,7 +1573,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Left
 			}),
 			utility:Create("TextBox", {
-				Name = "TextBox",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Position = UDim2.new(1, -30, 0, 6),
@@ -1573,7 +1586,7 @@ do
 				TextXAlignment = Enum.TextXAlignment.Right
 			}),
 			utility:Create("TextLabel", {
-				Name = "Slider",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				Position = UDim2.new(0, 10, 0, 28),
 				Size = UDim2.new(1, -20, 0, 16),
@@ -1581,7 +1594,7 @@ do
 				Text = "",
 			}, {
 				utility:Create("ImageLabel", {
-					Name = "Bar",
+					Name = randomString(),
 					AnchorPoint = Vector2.new(0, 0.5),
 					BackgroundTransparency = 1,
 					Position = UDim2.new(0, 0, 0.5, 0),
@@ -1593,7 +1606,7 @@ do
 					SliceCenter = Rect.new(2, 2, 298, 298)
 				}, {
 					utility:Create("ImageLabel", {
-						Name = "Fill",
+						Name = randomString(),
 						BackgroundTransparency = 1,
 						Size = UDim2.new(0.8, 0, 1, 0),
 						ZIndex = 3,
@@ -1603,7 +1616,7 @@ do
 						SliceCenter = Rect.new(2, 2, 298, 298)
 					}, {
 						utility:Create("ImageLabel", {
-							Name = "Circle",
+							Name = randomString(),
 							AnchorPoint = Vector2.new(0.5, 0.5),
 							BackgroundTransparency = 1,
 							ImageTransparency = 1.000,
@@ -1685,7 +1698,7 @@ do
 
 	function section:addDropdown(title, list, callback)
 		local dropdown = utility:Create("Frame", {
-			Name = "Dropdown",
+			Name = randomString(),
 			Parent = self.container,
 			BackgroundTransparency = 1,
 			Size = UDim2.new(1, 0, 0, 30),
@@ -1696,7 +1709,7 @@ do
 				Padding = UDim.new(0, 4)
 			}),
 			utility:Create("ImageLabel", {
-				Name = "Search",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Size = UDim2.new(1, 0, 0, 30),
@@ -1707,7 +1720,7 @@ do
 				SliceCenter = Rect.new(2, 2, 298, 298)
 			}, {
 				utility:Create("TextBox", {
-					Name = "TextBox",
+					Name = randomString(),
 					AnchorPoint = Vector2.new(0, 0.5),
 					BackgroundTransparency = 1,
 					TextTruncate = Enum.TextTruncate.AtEnd,
@@ -1722,7 +1735,7 @@ do
 					TextXAlignment = Enum.TextXAlignment.Left
 				}),
 				utility:Create("ImageButton", {
-					Name = "Button",
+					Name = randomString(),
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
 					Position = UDim2.new(1, -28, 0.5, -9),
@@ -1734,7 +1747,7 @@ do
 				})
 			}),
 			utility:Create("ImageLabel", {
-				Name = "List",
+				Name = randomString(),
 				BackgroundTransparency = 1,
 				BorderSizePixel = 0,
 				Size = UDim2.new(1, 0, 1, -34),
@@ -1745,7 +1758,7 @@ do
 				SliceCenter = Rect.new(2, 2, 298, 298)
 			}, {
 				utility:Create("ScrollingFrame", {
-					Name = "Frame",
+					Name = randomString(),
 					Active = true,
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
