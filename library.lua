@@ -10,7 +10,8 @@ local tweeninfo = TweenInfo.new
 
 
 -- tools --
-local hiddenUI = get_hidden_gui or gethui
+
+--local hiddenUI = get_hidden_gui or gethui
 
 function randomString()
 	local length = math.random(10,20)
@@ -227,7 +228,7 @@ do
 	function library.new(title)
 		local container = utility:Create("ScreenGui", {
 			Name = randomString(),
-			Parent = hiddenUI()
+			Parent = game:GetService("CoreGui")--hiddenUI()
 		}, {
 			utility:Create("ImageLabel", {
 				Name = "Main",
